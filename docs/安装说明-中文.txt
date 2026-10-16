@@ -1,0 +1,244 @@
+================================================================================
+ 绝地潜兵 2 模组交付包 —— 先读我（2026-10-15 深夜更新 · 纪元独立版 v3.0 完整玩法 + BSL 兼容 + Durable 结论）
+ 本次两件事：
+   ① 「纪元定时炸弹-独立版」完整玩法交付 v3.0（7 秒可射击重置引信 + 每秒滴滴 + 35 秒硬炸 + 扔枪解除；不装 HD2Runtime）
+   ② 「Durable Damage Delete 0.1.3」崩溃原因查清（第三方模组，不能改 → 只能隔离，见第七节）
+ 旧版本与旧说明备份都在 旧版\ 文件夹里，不要删。
+================================================================================
+
+【零】v3.0 完整玩法版 —— 只看这一节就够（下面章节是 v2.x 的备查记录）
+· 玩法（= 你要求的那套）：
+  - 支援武器槽里带着 PLAS-45 纪元 → 7 秒引信开始走；每一秒一声"滴"，音调逐秒升高（第 1 声最低）。
+  - 7 秒到点 → 手里引爆（游戏本体的纪元大爆炸：3/4/5 米、800/800 伤害）。
+  - 7 秒内用纪元开火 → 引信重置，重新从 7 秒开始算（这是唯一解除方式）。
+  - 连续携带满 35 秒 → 强制引爆（开枪无法推迟）；想解除只能把枪扔掉；扔枪同时清掉 7 秒引信。
+  - 死亡 / 任务结束 / 离开任务 → 全部复位；重新捡起 → 从零开始新的一轮。
+  - 只在你是房主（单人/自己开的房）时生效——与 HD2Runtime 版验证过的范围一致。
+· 安装：Echelon 导入「2-纪元定时炸弹-独立版v3.0-BSL版.zip」→ 启用 → 部署 → 重启游戏。
+  - 与 v2.x 独立版共用同一 GUID：列表里出现两条"纪元定时炸弹 独立版"时只留 v3.0。
+  - v2.3 及更旧的包已全部移到 旧版\（不要再装）。「Epoch Timebomb 0.5.0」(Runtime 版) 也不要与它同开。
+  - v3.0 不再依赖任何"过充引信"字段，但「纪元和磁轨炮取消过续爆炸」会写同一条数据，建议保持禁用。
+· 性能与安全（针对你担心的"扫内存把内存吃爆"）：
+  - 本版完全不扫内存：不遍历内存区域、不搜内容。只读 game.dll 里固定地址的几个字段，
+    每 100 毫秒一次、每次几十个 4 字节读取（每秒合计几 KB），无每帧分配、无常驻大缓冲。
+  - 提示音是 Windows 异步 PlaySound（启动时一次性生成 7 个小波形，各约 3.5 KB），不占帧、不进游戏音频总线。
+  - 防版本漂移：启动时校验 442 条指令字节 + 两个模块的 PE 大小；每次引爆前再校验一次爆炸函数序言。
+    任何一条不符 → 只写日志、不读不写（休眠），不会乱来。
+  - 唯一写操作 = 调用游戏自己的 RequestExplosion（与 HD2Runtime 同一套参数模板和前置校验）。
+· 日志：C:\Users\hexua\AppData\Local\CowboyBingus\Helldivers2\Logs\EpochTimebombStandalone.log
+  成功关键词：[epoch-timebomb-standalone/3.0.0] PROBE_READY / CARRY_STARTED / FUSE_7S armed /
+  BEEP n / RESET_BY_EPOCH_SHOT / CARRY_LIMIT_REACHED / OVERCHARGE_REQUESTED (FUSE_7S 或 CARRY_LIMIT_REACHED)
+  失败会写 EXPLOSION_REFUSED: 原因（把日志发我即可）。BSL 日志应出现
+  mods/hexua/epoch_timebomb_standalone: loaded。
+· 离线验证（本次没启动游戏、没附加进程）：状态机 9/9 通过、常量核对（442 条 pin）全部一致、
+  模块冒烟测试通过、打包逐字节复验通过；证据在 沙盒测试\v3.0\。
+· 如实声明：引爆手感、音量、35 秒节奏这些"游戏内观感"需要你实测；不对就把日志发我，我按证据改。
+· 「2-纪元定时炸弹-独立版v3.0-BSL版.zip」sha256:
+  BC0CC1F1BAAD259C80C4BBB41B308C24106101BE7E78B0DBC3FC27FC8BDA0891（19518 字节）
+
+【一】结论速览
+1) 纪元定时炸弹 = 已修好，用「2-纪元定时炸弹-独立版v2.3-只读表头.zip」，不需要 HD2Runtime。
+   v2.3 修掉一个真 bug：v2.0–v2.2 会把游戏的 update 钩子整个顶掉、不接上一家的，导致在它
+   之前加载的其它 BSL 模组全部停摆 —— 你说的"所有需要 BSL 的模组都没效果"就是这个原因
+   （详见第十一节；与 BSL v19 同装的离线验证在 兼容性验证-与BSL同装\）。
+   前提：必须禁用第三方模组「纪元和磁轨炮取消过续爆炸」（= Epoch-Railgun-No-Overload 0.1.3，
+   Echelon 里显示为这个中文名）——它一直在把纪元同一条数据往反方向写（爆炸引用清零、
+   引信写成"永不炸"），这就是"写成功但没效果"的另一半原因（证据见第六节）。
+2) Durable Damage Delete 0.1.3 = 冲突/依赖对象是 HD2Runtime（0.40.0）：
+   它强制依赖 HD2Runtime（不装就加载失败），装上后又只能走 0.40.0 的旧版（legacy SDK 0.28.1）
+   兼容通道；而「HD2Runtime 0.40.0 + BSL v19」这套组合在你的机器上会崩（20:36 会话加载成功
+   约 10 余秒后 0xC0000005）。处理：保持 Durable 与 HD2Runtime 都禁用（现状就是禁用）；想恢复
+   它只能等作者更新，反馈模板见第七节。
+3) 旁证：把上面这套组合禁用后，21:18 那次启动 43 个模组全部加载成功、正常退出，
+   没有再产生新崩溃转储（CrashDumps 里 21:18 之后 = 0 个）。
+
+【二】文件清单（都在本文件夹）
+  1-磁轨炮-独立版v3.0-只读表头.zip                    未改动，照旧
+  2-纪元定时炸弹-独立版v3.0-BSL版.zip                 本次交付（完整玩法；v2.0–v2.3 都已移到 旧版\）
+  兼容性测试-与BSL同装-v1.zip                          与 BSL v19 同装兼容性验证（第十一节）
+  3-FAF14飞矛冲击-2.0-只读表头.zip                    未改动，照旧
+  Runtime版备用\2-纪元定时炸弹-Runtime版v0.5.0.zip     备用方案（需前置 HD2Runtime，先读第八节）
+  Runtime版备用\前置-HD2Runtime-0.40.0-runtime.zip     备用方案的前置（同上）
+  旧版\2-纪元定时炸弹-独立版v2.2-只读表头.zip          v2.2 备份（有 update 链 bug，别发布）
+  旧版\2-纪元定时炸弹-独立版v2.1-只读表头.zip          v2.1 备份
+  旧版\2-纪元定时炸弹-独立版v2.0-只读表头.zip          v2.0 备份（不要再装）
+  旧版\源码v2.2-epoch_timebomb_standalone.lua          v2.2 源码备份
+  旧版\源码v2.1-epoch_timebomb_standalone.lua          v2.1 源码备份
+  旧版\源码v2.0-epoch_timebomb_standalone.lua          v2.0 源码备份
+  旧版\先读我-安装说明-旧版备份.txt                    初版说明备份
+  旧版\validation-report-2026-10-12-备份.json          旧校验报告备份
+  源码\epoch_timebomb_standalone.lua                   v2.3 源码（与 zip 内代码一致）
+  validation-report.json                               全过程校验记录（JSON）
+  沙盒测试\                                            离线验证证据＋复现脚本：
+    sandbox-results-v2.3.txt         v2.3 沙盒 7/7 通过（真实 v2.3 源码＋伪造内存区）
+    sandbox-results-v2.2.txt         v2.2 沙盒 7/7 通过（保留）
+    sandbox-results-v2.1.txt         v2.1 沙盒 5/5 通过（保留）
+    runtime-v0.5.0-tests-0.40.0.txt  Runtime 版 34/34 通过（0.40.0 SDK，含音频烟测）
+    build-v2.1-results.txt           v2.1 打包逐字节复验结果
+    build-v2.3-results.txt           v2.3 打包逐字节复验结果（ALL CHECKS PASSED）
+    build_v23.py / build_v22.py / build_v21.py / sandbox_run.py / check_builder.py   复现脚本
+
+【三】安装（Echelon；以后若回 Arsenal，步骤一样）
+1) 先禁用「纪元和磁轨炮取消过续爆炸」：在 Echelon 列表里搜"纪元"，找到这一条，
+   把它的"启用"和"部署"两个开关都关掉（让下一局不再加载它）。← 这一步是必须的
+2) 导入「2-纪元定时炸弹-独立版v2.2-只读表头.zip」→ 启用 → 部署。
+   · 它与 v2.1/v2.0 共用同一个 GUID（e1de5a10-...），管理器会当成同一模组的更新；
+     如果列表里出现两条"纪元定时炸弹 独立版"，只保留 v2.2 那条，另一条禁用或删掉。
+3) 与「1-磁轨炮 v3.0」「3-FAF14 2.0」可以同装；「纪元提示音效」只是音频替换，可以留着。
+4) 重启游戏（部署变更要重开才生效）。
+   （「纪元和磁轨炮取消过续爆炸」同时还会给电磁炮关过载爆炸；本次只确认了纪元侧的冲突。）
+
+【四】游戏内怎么用 / 应该看到什么
+· 正常玩法完全不变：按住到满蓄（约 2.5 秒）松手 = 正常满蓄弹；点射、短蓄力照旧。
+· "定时炸弹"玩法：按住不放 → 约 2.6 秒进入过充 → 过充后继续按住到满 7 秒（合计约 9.6 秒）
+  → 武器在手中过充爆炸（游戏本体的 PLAS-45 过充爆炸），此时不发射弹体。
+· 在过充期间（约 2.6~9.6 秒之间）松手 = 正常满蓄射击，计时作废；再按住重新计时。
+· 两个注意点：
+  - 引信只在"按住过充"时走：不按的时候不倒数、带在身上不会自己炸（自动引信+提示音那种完整
+    玩法只有 Runtime 版能做）。
+  - 独立版没有提示音（纯改数据做不了声音）；逐秒升调提示音是 Runtime 版的特性。
+
+【五】日志确认（出问题先看日志）
+日志：C:\Users\hexua\AppData\Local\CowboyBingus\Helldivers2\Logs\EpochTimebombStandalone.log
+成功时应出现（前缀 [epoch-timebomb-standalone/2.3.0]，可直接搜这些片段）：
+  loaded: standalone Epoch Timebomb v2.3 (no HD2Runtime); overcharge fuse 3.25 -> 7.0 s.
+    （这句末尾带 "Update hook: chained." 说明它接上了前一个每帧钩子，不会挤掉别的模组）
+  regions to inspect (28 bytes each): NNNN
+  entity region found at 0x...
+  epoch charge record 0x... level=[1,2.5,2.6] explode=0 limit=3.25 (baseline ok)
+  APPLIED epoch.overcharge_limit_seconds at 0x...
+  charge RESOLVED / epoch overcharge record resolved and armed
+另外 Bingus 自己的日志（Logs\BingusSharedLoader.log）里应出现：
+  mods/hexua/epoch_timebomb_standalone: loaded
+确认 No-Overload 确实已关：BingusSharedLoader.log 里不再出现
+  mods/starm/epoch_railgun_no_overload
+出错行对照：
+· CONFLICT: the Epoch charge record ... already in the "Epoch-Railgun No-Overload" state
+  （explosion reference +200=0、fuse +208≈1e9）→ No-Overload 还在生效。本模组按规矩拒绝与它
+  对冲（只记日志、不写、不重扫）。按第三节第 1 步禁用它，重启。
+· overcharge fuse was replaced with 1000000000 s (looks like "Epoch-Railgun No-Overload"...)
+  Backing off -- no rewrite, no rescan → 写入成功后被它顶掉；处理同上。
+· does not match the expected baseline ... not writing → 当前字段值不是原版状态（被别的模组写过）。
+  先排查 No-Overload；其余情况把日志发我。
+· search pass 1 done; charge record not found yet (one final pass in 180s, then dormant)
+  → 启动时没抓到记录。进一次任务再看；还是没有就把日志发我。
+· 防卡顿设计不变：只在启动扫一次 + 180 秒补一次，之后休眠；绝不每秒/每帧动内存；
+  所有写入都是"先对指纹 → 再写 → 再回读"，对不上就只记日志、什么都不写。
+
+【六】纪元冲突真相（本次从日志实锤）
+「纪元和磁轨炮取消过续爆炸」0.1.3（starm 作者的 Epoch-Railgun-No-Overload；Echelon 条目
+id 31db015dcf80，文件夹 ...\Echelon\mods\纪元和磁轨炮取消过续爆炸 (31db015dcf80)）做的事：
+· 它对纪元的 charge 记录（index=8）写 +200（爆炸引用）与 +208（引信），值为 0 与约 1e9 秒
+  （= 永不炸）；对电磁炮（index=9）写 +185 与 +200；另外改纪元弹匣/装填。
+  —— 取自它自己的日志 Logs\EpochRailgunNoOverload.log（例：13:18:41Z＝本地 21:18 写入、
+     13:19:25Z 退出还原）。
+· 它在启动后约 10~15 秒才写，晚于定时炸弹写入 → 会把定时炸弹写好的 7 秒顶掉；
+  v2.0 的"完全没效果"与 v2.1 写成功却仍可能不炸，都指向这个"顶写"。
+· v2.2 对策：检测到该状态就记 CONFLICT、绝不反写、不重扫（规矩：不覆盖别的模组写的值）。
+  想用定时炸弹 → 二选一：关掉 No-Overload，重启，再用第三/四节方法。
+· 独立版（v2.2）与 Runtime 版（0.5.0）也不要同时装，它们改同一个字段。二选一。
+
+【七】Durable Damage Delete 0.1.3 —— 崩溃冲突结论（第三方模组，不能改它，只能隔离）
+· 它依赖谁：它的 hd2runtime.json 要求模块 mods/skyeshade/hd2runtime（≥0.28.1）。
+  - 没装 HD2Runtime 时：Bingus 日志报 module 'mods/skyeshade/hd2runtime' not found，
+    它自己加载失败（游戏不崩，但它完全无效）。
+  - 装上 HD2Runtime 0.40.0 后：它走 0.40.0 的"旧版兼容通道"。HD2Runtime.log 第 154 行原文：
+    "legacy SDK 0.28.1 operation from mods/aldarrin/durable_damage_delete: PLAS-45 Epoch
+     damage.primary.durable_damage needs allow_unverified_effect=true since SDK 0.30.0 and is
+     applied without it, as SDK 0.28.1 allowed. ..."
+    → 即：它未经新 SDK 的安全验证门，直接对纪元数据写入（runtime 作者明确警告的点）。
+· 崩溃时间线（读日志）：
+  - 20:36:09 会话：全部模组加载成功（其中包含 Durable 与 HD2Runtime，HD2Runtime.log 最后一条
+    写于 20:36:18）→ 约 10 余秒后崩溃：exception 0xC0000005 at helldivers2.exe+0x66D1FF，
+    转储 helldivers2.exe.27936.dmp（20:36:26）。
+  - 如实补充：在你加入 Durable 之前（20:16–20:34 期间）也已有至少 7 个崩溃转储（两套崩溃签名
+    交替出现）。所以准确说法是：崩溃与「HD2Runtime 0.40.0 + BSL v19」这套组合强相关；
+    Durable 是唯一"强制拉上 HD2Runtime"的模组 —— 想开 Durable 就等于把游戏带回这套会崩的组合。
+· 处理（我们不动它的文件）：
+  1) Echelon 里保持「Durable Damage Delete 0.1.3」= 禁用 + 未部署；
+  2) 「HD2Runtime 0.40.0」也保持禁用（它就是崩溃组合的另一半）；
+  3) 想恢复用它只有两条路（都需要作者动手，你不能改、我也不改）：
+     作者用 SDK ≥0.30 重新导出；或给该操作加 allow_unverified_effect=true。
+· 给作者的反馈模板（英文，直接复制给他）：
+  "Hi! Your mod seems to be exported with HD2Runtime SDK 0.28.1. On HD2Runtime 0.40.0 it is
+   applied through the legacy path with this warning: 'PLAS-45 Epoch damage.primary.durable_damage
+   needs allow_unverified_effect=true since SDK 0.30.0 and is applied without it, as SDK 0.28.1
+   allowed.' On my setup (Bingus Shared Loader v19 + HD2Runtime 0.40.0) the game crashed with
+   0xC0000005 about 10 seconds after startup with your mod loaded. Could you please rebind the
+   project to SDK 0.30.0+ and re-export (or add allow_unverified_effect=true) and test against
+   the current game build? Thanks a lot!"
+
+【八】备用：Runtime 版 v0.5.0 ＋ 前置 HD2Runtime 0.40.0（现状：不建议优先使用）
+什么时候才用：v2.2 实测仍不满意、且你愿意自己承担 HD2Runtime 组合的崩溃风险。
+安装顺序（两个 zip 是两个独立模组，分别导入，不要互相合并/嵌套）：
+1) 导入「Runtime版备用\前置-HD2Runtime-0.40.0-runtime.zip」→ 启用 → 部署。
+2) 再导入「Runtime版备用\2-纪元定时炸弹-Runtime版v0.5.0.zip」→ 启用 → 部署。
+3) 禁用独立版纪元与 No-Overload（和第三节第 1 步相同）。
+效果：射击点燃 7 秒引信（继续射击可重置，最长 35 秒携带硬截止）、逐秒升调提示音、到点自动
+爆炸；+25% 伤害；弹匣 3→4。
+风险提示（本次新证据）：
+· HD2Runtime 0.40.0 + BSL v19 组合在你的机器上有多次 0xC0000005 崩溃记录（见第七节）；
+  除非必要不要装这套。
+· 若仍要试：给 HD2Runtime 勾它的子选项「Mouse wheel hook off (may fix GameGuard crashes)」，
+  出现 GameGuard 报错/黑屏/启动闪退就选它。
+· 装 Runtime 后「Durable Damage Delete」会想重新生效 —— 按第七节，保持它也禁用。
+· 日志：Logs\HD2Runtime.log；成功关键字：Epoch Timebomb 0.5.0 loaded / POWER_PACKAGE submitted /
+  FUSE_7S / OVERCHARGE_REQUESTED / CARRY_LIMIT_REACHED；失败关键字：PREPARE_REFUSED /
+  EXPLOSION_REFUSED / POSITION_UNAVAILABLE（出现就把日志发我）。
+
+【九】测试状态（如实声明）
+· v3.0（当前交付）：状态机 9/9 通过（模拟时钟 + 假 probe，覆盖 7 秒引信/开枪重置/35 秒硬炸/扔枪解除/死亡/
+  任务结束/链式 update 钩子/未就绪休眠）；常量核对：442 条 pin 与 HD2Runtime 研究文件逐条一致；模块冒烟测试
+  通过（无游戏时安全拒绝）；打包逐字节复验通过。证据：沙盒测试\v3.0\ 下三份结果文件。
+· v2.3（历史）：离线沙盒 7/7 通过（真实 v2.3 源码 + 伪造内存区，用游戏自带 lua51.dll 载入）：正常写入；
+  指纹不符拒写；explode=1 拒写；已是 7 秒跳过；被 No-Overload 顶掉 → 只记日志；检测到
+  No-Overload 状态 → CONFLICT 拒绝写入并休眠。证据：沙盒测试\sandbox-results-v2.3.txt。
+  打包复验：zip 逐成员逐字节与重建一致（ALL CHECKS PASSED）。
+· 与 BSL 同装：兼容性验证-与BSL同装\results.txt 全部 PASS（发现规则命中、资源名唯一、
+  loader 在场/不在场三条沙盒路径通过、loader 的 update 链仍被调用）。
+· 与 BSL 同装（v3.0 复测）：兼容性验证-与BSL同装\results-v3.0.txt 与 沙盒测试\v3.0\
+  bsl-compat-results-v3.0.txt 全部 PASS —— BSL v19 自带发现模式命中 mods/hexua/epoch_timebomb_standalone；
+  85 个已部署补丁里资源名唯一；游戏自带 lua51.dll 载入真实 v3.0 载荷 + loader 契约桩：loader 在场时
+  钩子 chained、帧计数 8/8、loader 全局未被动；无 loader 时走回退日志；非游戏进程 PROBE_NOT_READY 安全休眠。
+· 你机器上的真实证据：v2.1（写层逻辑与 v2.2 相同）在 20:14:51 的日志里成功命中并写入
+  （APPLIED epoch.overcharge_limit_seconds at 0x19BBCE077F4）；21:18 那次 43 个模组全加载、
+  正常退出、无新崩溃。
+· 本次我们仍然没有启动游戏、没有附加游戏进程 —— 游戏内最终效果请按第四节实测，
+  不对就把日志（EpochTimebombStandalone.log + BingusSharedLoader.log）发我。
+
+【十】校验信息
+· 2-纪元定时炸弹-独立版v3.0-BSL版.zip   sha256:
+  BC0CC1F1BAAD259C80C4BBB41B308C24106101BE7E78B0DBC3FC27FC8BDA0891（19518 字节）
+· 备用方案（本次未改动）：
+  Runtime版备用\2-纪元定时炸弹-Runtime版v0.5.0.zip   sha256 347DE95CBEC25DBD1D21E6495294408E3FAC9809BB2BBA2AD669D735D0A8D037
+  Runtime版备用\前置-HD2Runtime-0.40.0-runtime.zip   sha256 3357D8B2B832DAD23DD96AF90E21D4FCDEA60367A097A172D7E749DDBC1FF0AB
+  旧版\2-纪元定时炸弹-独立版v2.1-只读表头.zip       sha256 AEDFAFBC1F20AD4083B7C9B8483A0E3646FF9C67F59E0FC93BF36BA886ED40EA
+· 适配游戏版本：1.8.46015.0 / exe 6AB382E4（表头与偏移常量绑定此版本；游戏更新后本模组表现为
+  "只记日志、不写内存"，不会乱写）。
+
+【十一】BSL 兼容性：v2.3 修掉的 bug（重要）
+· 问题（v2.0–v2.2）：加载时用 rawset(_G,'update', 自己的钩子) 顶掉了原来的每帧钩子，而代码里
+  用来记原始钩子的 original_update 从来没有被赋值 → 等于"把别人的钩子拔掉"。后果：本模组一加载，
+  所有先于它加载的 BSL 模组（含 BSL 框架自带的那一批）每帧逻辑全部停摆。
+  · 你机器上的证据：21:36 那次启动（未加载本模组）VehicleCooldown 每 60 秒一条心跳
+    （uptime=37/97/157/217s）；21:41 那次启动（加载了本模组）整个 3 分 37 秒只有开局两行、
+    之后没有任何心跳。
+· 修复（v2.3）：装钩子之前先 rawget(_G,'update') 记住上一个，每帧调用它；没有上一个才自己装。
+  日志里会写 "Update hook: chained."（没有旧钩子时是 installed）。
+· 离线验证（不启动游戏、不附加进程）见 兼容性验证-与BSL同装\（脚本 + results.txt）：
+  ① 用 BSL 本体自己的发现规则（从你机器已安装的 BSL v19 补丁里抽出）命中本模组补丁；
+  ② 85 个已部署补丁全量扫描：mods/hexua/epoch_timebomb_standalone 资源名唯一，不撞别人；
+  ③ 沙盒（游戏自带 lua51.dll + 与 BSL 同接口的 loader 桩）3 场景全过：loader 在场正常写入、
+     loader 在场冲突拒写、loader 不在场回退；且 loader 的 update 链仍被调用（帧计数 8 > 0）；
+  ④ 你机器真实会话：BSL 日志 43 loaded / 0 failed，其中 mods/hexua/epoch_timebomb_standalone: loaded。
+· 一句话：v2.0–v2.2 确实会"挤掉"别的 BSL 模组的每帧逻辑；v2.3 已经不会了，可以放心发布。
+
+【更新记录】
+· 2026-10-15 深夜（第三版）：v3.0 与 BSL v19 同装复测全部通过（发现规则/唯一性/loader 桩两条路径/
+  被动拒载）；证据补入 沙盒测试\v3.0\ 与 兼容性验证-与BSL同装\。
+· 2026-10-15 深夜（第二版）：交付 v3.0 完整玩法（不装 HD2Runtime；7 秒可射击重置引信 + 每秒提示音 +
+  35 秒硬炸 + 扔枪解除；全固定地址读取，零内存扫描）。
+· 2026-10-15 深夜：交付 v2.3（修掉 update 钩子链 bug）；补与 BSL v19 同装兼容性测试。
+· 2026-10-15 晚：交付 v2.2（新增 No-Overload 冲突守卫）；查明并记录 Durable ↔ HD2Runtime 崩溃结论。
+· 2026-10-15 下午：交付 v2.1（修掉 v2.0 的"写了两处、互相打架"问题）。
+================================================================================

@@ -1,0 +1,8 @@
+OPEN=nil/game.dll is not loaded
+BLAST_KIND=407
+PINS=442
+STATE=nil
+CARRIED=false
+SHOTS=nil
+EXPLODE=false/PROBE_NOT_READY
+SMOKE PASS

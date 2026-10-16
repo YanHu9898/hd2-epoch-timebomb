@@ -1,0 +1,252 @@
+[EpochTimebomb] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+[EpochTimebomb] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+[EpochTimebomb] CARRY_STARTED: Epoch is on the diver; 7 s fuse and 35 s hard limit running
+[EpochTimebomb] FUSE_7S armed (carrying Epoch); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] BEEP 5 (5.0 s to blast)
+[EpochTimebomb] BEEP 4 (4.0 s to blast)
+[EpochTimebomb] BEEP 3 (3.0 s to blast)
+[EpochTimebomb] BEEP 2 (2.0 s to blast)
+[EpochTimebomb] BEEP 1 (1.0 s to blast)
+[EpochTimebomb] OVERCHARGE_REQUESTED (FUSE_7S) at 1.0 2.0 3.0; total=1
+[EpochTimebomb] FUSE_7S armed (carrying Epoch); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] BEEP 5 (5.0 s to blast)
+[EpochTimebomb] BEEP 4 (4.0 s to blast)
+[EpochTimebomb] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+[EpochTimebomb] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+[EpochTimebomb] CARRY_STARTED: Epoch is on the diver; 7 s fuse and 35 s hard limit running
+[EpochTimebomb] FUSE_7S armed (carrying Epoch); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] BEEP 5 (5.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] BEEP 5 (5.0 s to blast)
+[EpochTimebomb] BEEP 4 (4.0 s to blast)
+[EpochTimebomb] BEEP 3 (3.0 s to blast)
+[EpochTimebomb] BEEP 2 (2.0 s to blast)
+[EpochTimebomb] BEEP 1 (1.0 s to blast)
+[EpochTimebomb] OVERCHARGE_REQUESTED (FUSE_7S) at 1.0 2.0 3.0; total=1
+[EpochTimebomb] FUSE_7S armed (carrying Epoch); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+[EpochTimebomb] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+[EpochTimebomb] CARRY_STARTED: Epoch is on the diver; 7 s fuse and 35 s hard limit running
+[EpochTimebomb] FUSE_7S armed (carrying Epoch); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+[EpochTimebomb] CARRY_LIMIT_REACHED after 35 s uninterrupted carry; shots can no longer save===== CARRY_FUSE =====
+BEEPS=7@1000 6@2000 5@3000 4@4000 3@5000 2@6000 1@7000 7@8100 6@9100 5@10100 4@11100
+BLASTS=407@8000@1,2,3
+CALLS=open1,state121,carried121,shots111
+LOG [epoch-timebomb-standalone/3.0.0] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+LOG [epoch-timebomb-standalone/3.0.0] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+LOG [epoch-timebomb-standalone/3.0.0] CARRY_STARTED: Epoch is on the diver; 7 s fuse and 35 s hard limit running
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (carrying Epoch); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 5 (5.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 4 (4.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 3 (3.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 2 (2.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 1 (1.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] OVERCHARGE_REQUESTED (FUSE_7S) at 1.0 2.0 3.0; total=1
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (carrying Epoch); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 5 (5.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 4 (4.0 s to blast)
+PASS
+===== SHOT_RESET =====
+BEEPS=7@0 6@1000 5@2000 7@3000 6@4000 5@5000 4@6000 3@7000 2@8000 1@9000 7@10100 6@11100
+BLASTS=407@10000@1,2,3
+CALLS=open1,state121,carried121,shots121
+LOG [epoch-timebomb-standalone/3.0.0] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+LOG [epoch-timebomb-standalone/3.0.0] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+LOG [epoch-timebomb-standalone/3.0.0] CARRY_STARTED: Epoch is on the diver; 7 s fuse and 35 s hard limit running
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (carrying Epoch); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 5 (5.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 5 (5.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 4 (4.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 3 (3.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 2 (2.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 1 (1.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] OVERCHARGE_REQUESTED (FUSE_7S) at 1.0 2.0 3.0; total=1
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (carrying Epoch); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+PASS
+===== CARRY_LIMIT =====
+BEEPS=7@0 6@1000 7@2000 6@3000 7@4000 6@5000 7@6000 6@7000 7@8000 6@9000 7@10000 6@11000 7@12000 6@13000 7@14000 6@15000 7@16000 6@17000 7@18000 6@19000 7@20000 6@21000 7@22000 6@23000 7@24000 6@25000 7@26000 6@27000 7@28000 6@29000 7@30000 6@31000 7@32000 6@33000 7@34000
+BLASTS=407@35000@1,2,3
+CALLS=open1,state451,carried451,shots451
+LOG [epoch-timebomb-standalone/3.0.0] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+LOG [epoch-timebomb-standalone/3.0.0] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+LOG [epoch-timebomb-standalone/3.0.0] CARRY_STARTED: Epoch is on the diver; 7 s fuse and 35 s hard limit running
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (carrying Epoch); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (RESET_BY_EPOCH_SHOT); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] CARRY_LIMIT_REACHED after 35 s uninterrupted carry; shots can no longer save it; drop to reset
+LOG [epoch-timebomb-standalone/3.0.0] OVERCHARGE_REQUESTED (CARRY_LIMIT_REACHED) at 1.0 2.0 3.0; total=1
+PASS
+===== DROP_RESETS =====
+BEEPS=7@0 6@1000 5@2000 4@3000 3@4000
+BLASTS=
+CALLS=open1,state151,carried151,shots50
+LOG [epoch-timebomb-standalone/3.0.0] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+LOG [epoch-timebomb-standalone/3.0.0] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+LOG [epoch-timebomb-standalone/3.0.0] CARRY_STARTED: Epoch is on the diver; 7 s fuse and 35 s hard limit running
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (carrying Epoch); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 5 (5.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 4 (4.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 3 (3.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] cycle reset: Epoch dropped / not carried
+PASS
+===== NOT_HOST_IDLE =====
+BEEPS=
+BLASTS=
+CALLS=open1,state101,carried0,shots0
+LOG [epoch-timebomb-standalone/3.0.0] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+LOG [epoch-timebomb-standalone/3.0.0] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+PASS
+===== DEATH_RESETS =====
+BEEPS=7@0 6@1000 5@2000 4@3000 3@4000 2@5000
+BLASTS=
+CALLS=open1,state151,carried60,shots60
+LOG [epoch-timebomb-standalone/3.0.0] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+LOG [epoch-timebomb-standalone/3.0.0] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+LOG [epoch-timebomb-standalone/3.0.0] CARRY_STARTED: Epoch is on the diver; 7 s fuse and 35 s hard limit running
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (carrying Epoch); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 5 (5.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 4 (4.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 3 (3.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 2 (2.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] cycle reset: local player not alive
+PASS
+===== MISSION_END =====
+BEEPS=7@0 6@1000 5@2000 4@3000
+BLASTS=
+CALLS=open1,state121,carried40,shots40
+LOG [epoch-timebomb-standalone/3.0.0] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+LOG [epoch-timebomb-standalone/3.0.0] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+LOG [epoch-timebomb-standalone/3.0.0] CARRY_STARTED: Epoch is on the diver; 7 s fuse and 35 s hard limit running
+LOG [epoch-timebomb-standalone/3.0.0] FUSE_7S armed (carrying Epoch); beep 7
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 6 (6.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 5 (5.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] BEEP 4 (4.0 s to blast)
+LOG [epoch-timebomb-standalone/3.0.0] cycle reset: left mission
+PASS
+===== CHAIN =====
+BEEPS=
+BLASTS=
+CALLS=open1,state21,carried21,shots0
+LOG [epoch-timebomb-standalone/3.0.0] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: chained.
+LOG [epoch-timebomb-standalone/3.0.0] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+PASS
+===== PROBE_NOT_READY =====
+BEEPS=
+BLASTS=
+CALLS=open1,state0,carried0,shots0
+LOG [epoch-timebomb-standalone/3.0.0] PROBE_NOT_READY: build pins mismatch (test) -- staying passive (no reads, no writes). Game build changed? update the RVA table.
+PASS
+===== state machine summary: 9/9 passed =====
+ it; drop to reset
+[EpochTimebomb] OVERCHARGE_REQUESTED (CARRY_LIMIT_REACHED) at 1.0 2.0 3.0; total=1
+[EpochTimebomb] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+[EpochTimebomb] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+[EpochTimebomb] CARRY_STARTED: Epoch is on the diver; 7 s fuse and 35 s hard limit running
+[EpochTimebomb] FUSE_7S armed (carrying Epoch); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] BEEP 5 (5.0 s to blast)
+[EpochTimebomb] BEEP 4 (4.0 s to blast)
+[EpochTimebomb] BEEP 3 (3.0 s to blast)
+[EpochTimebomb] cycle reset: Epoch dropped / not carried
+[EpochTimebomb] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+[EpochTimebomb] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+[EpochTimebomb] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+[EpochTimebomb] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+[EpochTimebomb] CARRY_STARTED: Epoch is on the diver; 7 s fuse and 35 s hard limit running
+[EpochTimebomb] FUSE_7S armed (carrying Epoch); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] BEEP 5 (5.0 s to blast)
+[EpochTimebomb] BEEP 4 (4.0 s to blast)
+[EpochTimebomb] BEEP 3 (3.0 s to blast)
+[EpochTimebomb] BEEP 2 (2.0 s to blast)
+[EpochTimebomb] cycle reset: local player not alive
+[EpochTimebomb] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: installed.
+[EpochTimebomb] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+[EpochTimebomb] CARRY_STARTED: Epoch is on the diver; 7 s fuse and 35 s hard limit running
+[EpochTimebomb] FUSE_7S armed (carrying Epoch); beep 7
+[EpochTimebomb] BEEP 6 (6.0 s to blast)
+[EpochTimebomb] BEEP 5 (5.0 s to blast)
+[EpochTimebomb] BEEP 4 (4.0 s to blast)
+[EpochTimebomb] cycle reset: left mission
+[EpochTimebomb] PROBE_READY: build pins verified; 10 Hz reads, RequestExplosion template armed. Update hook: chained.
+[EpochTimebomb] loaded: standalone Epoch Timebomb v3.0 (no HD2Runtime): 7 s shot-resettable fuse, 35 s carry hard limit, per-second beeps, native blast #407.
+[EpochTimebomb] PROBE_NOT_READY: build pins mismatch (test) -- staying passive (no reads, no writes). Game build changed? update the RVA table.
