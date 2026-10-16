@@ -29,7 +29,9 @@ no HD2Runtime, no memory scanning.
 ## 安装 / Install
 
 1. Install Bingus Shared Loader v19+ (or a mod manager that drives it, e.g. Echelon / Arsenal).
-2. Import `release/纪元定时炸弹-独立版v3.0-BSL版.zip`, enable and deploy it.
+2. Download the mod from [Releases](https://github.com/YanHu9898/hd2-epoch-timebomb/releases)
+   (`epoch-timebomb-v3.0-BSL.zip`), or use `release/纪元定时炸弹-独立版v3.0-BSL版.zip` from this tree;
+   import it, enable and deploy it.
 3. Restart the game. Log: `%LOCALAPPDATA%\CowboyBingus\Helldivers2\Logs\EpochTimebombStandalone.log`
    (success keywords: `PROBE_READY`, `FUSE_7S armed`, `OVERCHARGE_REQUESTED`).
 
